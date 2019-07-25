@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework Guru</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="user/header :: header"></th:block> /*/-->
+    
+<form action="/users/update" th:object="${formData}" method="post">
+	<table>
+		<tr>
+			<td>이름</td><td><input type="text" th:field="*{name}" />
+            <span th:each="err : ${#fields.errors('name')}" th:text="${err}" /></td>
+		</tr>
+		<tr>
+			<td>급여</td><td><input type="text" th:field="*{salary}" />
+            <span th:each="err : ${#fields.errors('salary')}" th:text="${err}" /></td>
+		</tr>		
+		<tr>
+			<td colspan="2"><input type="submit" value="등록"></td>
+		</tr>		
+	</table>
+</form>
+</div>	
+</body>
+</html>
